@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Eugene Krimkevich — Embedded Lending Advisory</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Epilogue:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1C1917; --ink-mid: #44403C; --ink-soft: #78716C; --ink-faint: #A8A29E;
+    --paper: #FAF7F2; --paper-warm: #F2EDE4; --paper-rule: #E5DDD3;
+    --gold: #B5894A; --gold-light: #D4AA72;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: var(--paper); color: var(--ink); font-family: 'Epilogue', sans-serif; font-weight: 300; line-height: 1.6; min-height: 100vh; }
+  a { color: inherit; text-decoration: none; }
+
+  /* NAV */
+  nav { position: sticky; top: 0; z-index: 100; background: var(--paper); border-bottom: 1px solid var(--paper-rule); height: 60px; display: flex; align-items: center; padding: 0 48px; justify-content: space-between; }
+  .nav-brand { font-family: 'Cormorant Garamond', serif; font-size: 17px; font-weight: 500; color: var(--ink); }
+  .nav-brand span { color: var(--gold); }
+  .nav-links { display: flex; gap: 32px; list-style: none; }
+  .nav-links a { font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-soft); transition: color 0.15s; }
+  .nav-links a:hover, .nav-links a.active { color: var(--ink); }
+  .nav-cta { background: var(--ink); color: var(--paper) !important; padding: 8px 18px; }
+  .nav-cta:hover { background: var(--ink-mid) !important; }
+  .nav-hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
+  .nav-hamburger span { display: block; width: 22px; height: 1.5px; background: var(--ink); }
+
+  /* PAGE */
+  .page { max-width: 860px; margin: 0 auto; padding: 64px 48px 80px; }
+  .eyebrow { font-size: 9px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); margin-bottom: 10px; }
+  .section-label { font-size: 9px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--ink-faint); margin-bottom: 20px; }
+
+  /* HERO */
+  .hero { padding: 64px 0 52px; border-bottom: 1px solid var(--paper-rule); margin-bottom: 52px; }
+  .hero h1 { font-family: 'Cormorant Garamond', serif; font-size: 48px; font-weight: 500; line-height: 1.05; margin-bottom: 6px; }
+  .hero h1 em { font-style: italic; color: var(--ink-mid); }
+  .hero-sub { font-size: 11px; letter-spacing: 0.14em; color: var(--ink-soft); margin-bottom: 32px; }
+  .hero-body { font-family: 'Cormorant Garamond', serif; font-size: 18px; line-height: 1.65; color: var(--ink-mid); max-width: 640px; padding-left: 20px; border-left: 2px solid var(--gold); margin-bottom: 36px; }
+  .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+  .btn { display: inline-block; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; padding: 11px 22px; transition: all 0.15s; }
+  .btn-primary { background: var(--ink); color: var(--paper); }
+  .btn-primary:hover { background: var(--ink-mid); }
+  .btn-secondary { border: 1px solid var(--paper-rule); color: var(--ink-soft); }
+  .btn-secondary:hover { border-color: var(--ink-soft); color: var(--ink); }
+
+  /* CRED STRIP */
+  .cred-strip { background: var(--paper-warm); border: 1px solid var(--paper-rule); padding: 28px 32px; display: grid; grid-template-columns: 1fr 1px 1fr 1px 1fr; gap: 0; margin-bottom: 52px; align-items: center; }
+  .cred-item { padding: 0 24px; text-align: center; }
+  .cred-item:first-child { padding-left: 0; }
+  .cred-item:last-child { padding-right: 0; }
+  .cred-number { font-family: 'Cormorant Garamond', serif; font-size: 28px; font-weight: 600; color: var(--ink); line-height: 1.1; margin-bottom: 4px; }
+  .cred-label { font-size: 11px; color: var(--ink-soft); line-height: 1.4; }
+  .cred-divider { width: 1px; height: 48px; background: var(--paper-rule); }
+
+  /* SERVICE TILES */
+  .services-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; margin-bottom: 16px; }
+  .service-tile { background: var(--paper-warm); border: 1px solid var(--paper-rule); padding: 26px 26px 22px; display: flex; flex-direction: column; justify-content: space-between; min-height: 175px; transition: border-color 0.15s; }
+  .service-tile:hover { border-color: var(--gold-light); }
+  .service-tile.dark { background: var(--ink); border-color: var(--ink); }
+  .tile-name { font-family: 'Cormorant Garamond', serif; font-size: 20px; font-weight: 500; color: var(--ink); margin-bottom: 8px; }
+  .service-tile.dark .tile-name { color: var(--paper); }
+  .tile-desc { font-size: 12px; color: var(--ink-soft); line-height: 1.5; flex-grow: 1; margin-bottom: 14px; }
+  .service-tile.dark .tile-desc { color: #78716C; }
+  .tile-meta { display: flex; justify-content: space-between; align-items: baseline; }
+  .tile-price { font-family: 'Cormorant Garamond', serif; font-size: 18px; font-weight: 600; color: var(--ink); }
+  .service-tile.dark .tile-price { color: var(--paper); }
+  .tile-duration { font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-faint); }
+  .service-tile.dark .tile-duration { color: #57534E; }
+  .services-cta { text-align: center; padding: 12px 0 0; margin-bottom: 52px; }
+  .services-cta a { font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); border-bottom: 1px solid transparent; transition: border-color 0.15s; }
+  .services-cta a:hover { border-color: var(--gold); }
+
+  /* FOOTER */
+  footer { border-top: 1px solid var(--paper-rule); padding: 28px 48px; display: flex; justify-content: space-between; align-items: center; }
+  .footer-name { font-family: 'Cormorant Garamond', serif; font-size: 14px; color: var(--ink-soft); }
+  .footer-links { display: flex; gap: 24px; }
+  .footer-links a { font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-faint); transition: color 0.15s; }
+  .footer-links a:hover { color: var(--ink); }
+
+  @media (max-width: 680px) {
+    nav { padding: 0 24px; }
+    .nav-links { display: none; position: absolute; top: 60px; left: 0; right: 0; background: var(--paper); border-bottom: 1px solid var(--paper-rule); flex-direction: column; padding: 20px 24px; gap: 16px; }
+    .nav-links.open { display: flex; }
+    .nav-hamburger { display: flex; }
+    .page { padding: 40px 24px 64px; }
+    .hero h1 { font-size: 34px; }
+    .hero-body { font-size: 16px; }
+    .services-grid { grid-template-columns: 1fr; }
+    .cred-strip { grid-template-columns: 1fr; gap: 20px; padding: 24px; }
+    .cred-divider { display: none; }
+    .cred-item { padding: 0; }
+    footer { flex-direction: column; gap: 16px; text-align: center; padding: 24px; }
+  }
+</style>
+</head>
+<body>
+<nav>
+  <a href="index.html" class="nav-brand">Eugene Krimkevich <span>·</span> Advisory</a>
+  <ul class="nav-links">
+    <li><a href="index.html" class="active">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li><a href="resume.html">Resume</a></li>
+    <li><a href="contact.html" class="nav-cta">Book a call</a></li>
+  </ul>
+  <div class="nav-hamburger" onclick="document.querySelector('.nav-links').classList.toggle('open')">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<div class="page">
+  <div class="hero">
+    <div class="eyebrow">Embedded Lending Advisory</div>
+    <h1>Built for platforms.<br><em>From the provider side.</em></h1>
+    <div class="hero-sub">Partner selection &nbsp;·&nbsp; Launch execution &nbsp;·&nbsp; Program audits</div>
+    <p class="hero-body">Embedded lending programs can be complex to evaluate, intensive to launch, and painful to unwind if they fail. I built the onboarding and partner growth function at Parafin — and I advise platforms so they go in with the same information the lender already has.</p>
+    <div class="hero-actions">
+      <a href="contact.html" class="btn btn-primary">Book a discovery call</a>
+      <a href="services.html" class="btn btn-secondary">View services & pricing</a>
+    </div>
+  </div>
+
+  <div class="cred-strip">
+    <div class="cred-item">
+      <div class="cred-number">Parafin</div>
+      <div class="cred-label">Built & led partner onboarding and growth function</div>
+    </div>
+    <div class="cred-divider"></div>
+    <div class="cred-item">
+      <div class="cred-number">Dozens</div>
+      <div class="cred-label">Embedded capital programs personally launched & overseen</div>
+    </div>
+    <div class="cred-divider"></div>
+    <div class="cred-item">
+      <div class="cred-number">DoorDash · Amazon<br>Gusto · Worldpay</div>
+      <div class="cred-label">Among platforms served at Parafin</div>
+    </div>
+  </div>
+
+  <div class="section-label">Engagements</div>
+  <div class="services-grid">
+    <div class="service-tile">
+      <div>
+        <div class="tile-name">Partner Selection &amp; Program Strategy</div>
+        <div class="tile-desc">Structured guidance through the full evaluation process — from RFP to MSA review to a written go/no-go recommendation.</div>
+      </div>
+      <div class="tile-meta">
+        <div class="tile-price">$17,500</div>
+        <div class="tile-duration">~4 weeks</div>
+      </div>
+    </div>
+    <div class="service-tile">
+      <div>
+        <div class="tile-name">Launch Execution</div>
+        <div class="tile-desc">Embedded advisory support from kickoff through go-live — project planning, weekly calls, readiness review, and a 30-day post-launch check-in.</div>
+      </div>
+      <div class="tile-meta">
+        <div class="tile-price">$16,500</div>
+        <div class="tile-duration">4–12 weeks</div>
+      </div>
+    </div>
+    <div class="service-tile">
+      <div>
+        <div class="tile-name">Program Audit</div>
+        <div class="tile-desc">Structured review of an underperforming or stalled program — root cause analysis and a prioritized 30/60/90-day action plan.</div>
+      </div>
+      <div class="tile-meta">
+        <div class="tile-price">$11,000</div>
+        <div class="tile-duration">2–4 weeks</div>
+      </div>
+    </div>
+    <div class="service-tile dark">
+      <div>
+        <div class="tile-name">Ongoing Advisory Retainer</div>
+        <div class="tile-desc">A standing sounding board for partner negotiations, renewals, hiring, and program growth — before decisions are made, not after.</div>
+      </div>
+      <div class="tile-meta">
+        <div class="tile-price">$3,000 / $5,000</div>
+        <div class="tile-duration">5 or 10 hrs · monthly</div>
+      </div>
+    </div>
+  </div>
+  <div class="services-cta"><a href="services.html">Full scope &amp; deliverables →</a></div>
+</div>
+
+<footer>
+  <div class="footer-name">Eugene Krimkevich — Embedded Lending Advisory</div>
+  <div class="footer-links">
+    <a href="about.html">About</a>
+    <a href="services.html">Services</a>
+    <a href="resume.html">Resume</a>
+    <a href="contact.html">Contact</a>
+  </div>
+</footer>
+</body>
+</html>

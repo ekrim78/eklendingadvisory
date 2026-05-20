@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Resume — Eugene Krimkevich</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Epilogue:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1C1917; --ink-mid: #44403C; --ink-soft: #78716C; --ink-faint: #A8A29E;
+    --paper: #FAF7F2; --paper-warm: #F2EDE4; --paper-rule: #E5DDD3;
+    --gold: #B5894A; --gold-light: #D4AA72;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: var(--paper); color: var(--ink); font-family: 'Epilogue', sans-serif; font-weight: 300; line-height: 1.6; min-height: 100vh; }
+  a { color: inherit; text-decoration: none; }
+  nav { position: sticky; top: 0; z-index: 100; background: var(--paper); border-bottom: 1px solid var(--paper-rule); height: 60px; display: flex; align-items: center; padding: 0 48px; justify-content: space-between; }
+  .nav-brand { font-family: 'Cormorant Garamond', serif; font-size: 17px; font-weight: 500; }
+  .nav-brand span { color: var(--gold); }
+  .nav-links { display: flex; gap: 32px; list-style: none; }
+  .nav-links a { font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-soft); transition: color 0.15s; }
+  .nav-links a:hover, .nav-links a.active { color: var(--ink); }
+  .nav-cta { background: var(--ink); color: var(--paper) !important; padding: 8px 18px; }
+  .nav-hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
+  .nav-hamburger span { display: block; width: 22px; height: 1.5px; background: var(--ink); }
+  .page { max-width: 860px; margin: 0 auto; padding: 64px 48px 80px; }
+  .eyebrow { font-size: 9px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); margin-bottom: 10px; }
+
+  .resume-header { display: flex; justify-content: space-between; align-items: flex-end; padding-bottom: 36px; border-bottom: 1px solid var(--ink); margin-bottom: 48px; }
+  .resume-header h1 { font-family: 'Cormorant Garamond', serif; font-size: 44px; font-weight: 500; line-height: 1.05; }
+  .resume-header h1 em { font-style: italic; color: var(--ink-mid); }
+  .resume-download { font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); border: 1px solid var(--gold-light); padding: 8px 16px; transition: all 0.15s; white-space: nowrap; }
+  .resume-download:hover { background: var(--gold); color: var(--paper); }
+
+  .resume-body { display: grid; grid-template-columns: 160px 1fr; gap: 0; }
+  .resume-section { display: contents; }
+  .resume-section-label { font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--ink-faint); padding: 32px 24px 32px 0; border-top: 1px solid var(--paper-rule); }
+  .resume-section-content { border-top: 1px solid var(--paper-rule); padding: 32px 0; }
+
+  .exp-item { margin-bottom: 30px; }
+  .exp-item:last-child { margin-bottom: 0; }
+  .exp-header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 2px; }
+  .exp-role { font-family: 'Cormorant Garamond', serif; font-size: 19px; font-weight: 500; color: var(--ink); }
+  .exp-dates { font-size: 11px; color: var(--ink-faint); }
+  .exp-company { font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); margin-bottom: 10px; }
+  .exp-bullets { list-style: none; font-size: 13px; color: var(--ink-mid); line-height: 1.6; }
+  .exp-bullets li { padding-left: 16px; position: relative; margin-bottom: 5px; }
+  .exp-bullets li::before { content: '—'; position: absolute; left: 0; color: var(--ink-faint); font-size: 10px; top: 3px; }
+
+  .skills-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .skill-group-label { font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-faint); margin-bottom: 8px; }
+  .skill-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+  .skill-tag { font-size: 11px; background: var(--paper-warm); border: 1px solid var(--paper-rule); color: var(--ink-mid); padding: 3px 10px; }
+
+  .edu-degree { font-family: 'Cormorant Garamond', serif; font-size: 17px; font-weight: 500; color: var(--ink); margin-bottom: 2px; }
+  .edu-school { font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); }
+  .edu-year { font-size: 11px; color: var(--ink-faint); }
+
+  .resume-note { background: var(--paper-warm); border: 1px solid var(--paper-rule); padding: 16px 20px; font-size: 12px; color: var(--ink-soft); margin-top: 40px; line-height: 1.6; font-style: italic; }
+
+  footer { border-top: 1px solid var(--paper-rule); padding: 28px 48px; display: flex; justify-content: space-between; align-items: center; }
+  .footer-name { font-family: 'Cormorant Garamond', serif; font-size: 14px; color: var(--ink-soft); }
+  .footer-links { display: flex; gap: 24px; }
+  .footer-links a { font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-faint); transition: color 0.15s; }
+  .footer-links a:hover { color: var(--ink); }
+
+  @media (max-width: 680px) {
+    nav { padding: 0 24px; }
+    .nav-links { display: none; position: absolute; top: 60px; left: 0; right: 0; background: var(--paper); border-bottom: 1px solid var(--paper-rule); flex-direction: column; padding: 20px 24px; gap: 16px; }
+    .nav-links.open { display: flex; }
+    .nav-hamburger { display: flex; }
+    .page { padding: 40px 24px 64px; }
+    .resume-header { flex-direction: column; align-items: flex-start; gap: 16px; }
+    .resume-header h1 { font-size: 32px; }
+    .resume-body { grid-template-columns: 1fr; }
+    .resume-section-label { border-top: none; padding: 24px 0 4px; color: var(--gold); }
+    .exp-header { flex-direction: column; gap: 2px; }
+    .skills-grid { grid-template-columns: 1fr; }
+    footer { flex-direction: column; gap: 16px; text-align: center; padding: 24px; }
+  }
+</style>
+</head>
+<body>
+<nav>
+  <a href="index.html" class="nav-brand">Eugene Krimkevich <span>·</span> Advisory</a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li><a href="resume.html" class="active">Resume</a></li>
+    <li><a href="contact.html" class="nav-cta">Book a call</a></li>
+  </ul>
+  <div class="nav-hamburger" onclick="document.querySelector('.nav-links').classList.toggle('open')">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<div class="page">
+  <div class="resume-header">
+    <div>
+      <div class="eyebrow">Resume</div>
+      <h1>Eugene Krimkevich<br><em>Embedded Lending Advisor</em></h1>
+    </div>
+    <a href="#" class="resume-download">Download PDF ↓</a>
+  </div>
+
+  <div class="resume-body">
+
+    <div class="resume-section">
+      <div class="resume-section-label">Experience</div>
+      <div class="resume-section-content">
+        <div class="exp-item">
+          <div class="exp-header">
+            <div class="exp-role">Independent Advisor</div>
+            <div class="exp-dates">2025 — Present</div>
+          </div>
+          <div class="exp-company">Embedded Lending Advisory</div>
+          <ul class="exp-bullets">
+            <li>Advising vertical SaaS platforms and marketplaces on embedded lending partner selection, program launch, and growth strategy</li>
+            <li>Engagements span first-time evaluations, active launches, and audits of underperforming programs</li>
+          </ul>
+        </div>
+        <div class="exp-item">
+          <div class="exp-header">
+            <div class="exp-role">Partner Onboarding &amp; Growth</div>
+            <div class="exp-dates">[Start year] — 2025</div>
+          </div>
+          <div class="exp-company">Parafin</div>
+          <ul class="exp-bullets">
+            <li>Built and led the function responsible for onboarding and scaling embedded capital programs across Parafin's platform and marketplace partners</li>
+            <li>Personally launched and oversaw dozens of embedded capital programs including DoorDash, Amazon, Gusto, and Worldpay</li>
+            <li>Developed partner evaluation frameworks, launch playbooks, and origination growth strategies adopted across the business</li>
+            <li>Managed partner relationships from initial diligence through MSA negotiation, integration, go-live, and long-term growth</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="resume-section">
+      <div class="resume-section-label">Expertise</div>
+      <div class="resume-section-content">
+        <div class="skills-grid">
+          <div>
+            <div class="skill-group-label">Domain</div>
+            <div class="skill-tags">
+              <span class="skill-tag">Embedded lending</span>
+              <span class="skill-tag">Partner programs</span>
+              <span class="skill-tag">Embedded finance</span>
+              <span class="skill-tag">Capital products</span>
+            </div>
+          </div>
+          <div>
+            <div class="skill-group-label">Functional</div>
+            <div class="skill-tags">
+              <span class="skill-tag">Business development</span>
+              <span class="skill-tag">MSA negotiation</span>
+              <span class="skill-tag">Program launch</span>
+              <span class="skill-tag">Origination growth</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="resume-section">
+      <div class="resume-section-label">Education</div>
+      <div class="resume-section-content">
+        <div class="edu-degree">[Degree] — [Field of Study]</div>
+        <div class="edu-school">[University]</div>
+        <div class="edu-year">[Year]</div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="resume-note">
+    This page reflects a summary of relevant experience. A full PDF resume is available on request or via the download link above.
+  </div>
+</div>
+
+<footer>
+  <div class="footer-name">Eugene Krimkevich — Embedded Lending Advisory</div>
+  <div class="footer-links">
+    <a href="about.html">About</a>
+    <a href="services.html">Services</a>
+    <a href="resume.html">Resume</a>
+    <a href="contact.html">Contact</a>
+  </div>
+</footer>
+</body>
+</html>

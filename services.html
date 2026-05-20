@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Services & Pricing — Eugene Krimkevich</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Epilogue:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1C1917; --ink-mid: #44403C; --ink-soft: #78716C; --ink-faint: #A8A29E;
+    --paper: #FAF7F2; --paper-warm: #F2EDE4; --paper-rule: #E5DDD3;
+    --gold: #B5894A; --gold-light: #D4AA72;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: var(--paper); color: var(--ink); font-family: 'Epilogue', sans-serif; font-weight: 300; line-height: 1.6; min-height: 100vh; }
+  a { color: inherit; text-decoration: none; }
+  nav { position: sticky; top: 0; z-index: 100; background: var(--paper); border-bottom: 1px solid var(--paper-rule); height: 60px; display: flex; align-items: center; padding: 0 48px; justify-content: space-between; }
+  .nav-brand { font-family: 'Cormorant Garamond', serif; font-size: 17px; font-weight: 500; }
+  .nav-brand span { color: var(--gold); }
+  .nav-links { display: flex; gap: 32px; list-style: none; }
+  .nav-links a { font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-soft); transition: color 0.15s; }
+  .nav-links a:hover, .nav-links a.active { color: var(--ink); }
+  .nav-cta { background: var(--ink); color: var(--paper) !important; padding: 8px 18px; }
+  .nav-hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
+  .nav-hamburger span { display: block; width: 22px; height: 1.5px; background: var(--ink); }
+  .page { max-width: 860px; margin: 0 auto; padding: 64px 48px 80px; }
+  .eyebrow { font-size: 9px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); margin-bottom: 10px; }
+  .section-label { font-size: 9px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--ink-faint); margin-bottom: 20px; }
+
+  .page-header { padding-bottom: 36px; border-bottom: 1px solid var(--ink); margin-bottom: 48px; }
+  .page-header h1 { font-family: 'Cormorant Garamond', serif; font-size: 44px; font-weight: 500; line-height: 1.05; margin-bottom: 20px; }
+  .page-header h1 em { font-style: italic; color: var(--ink-mid); }
+  .positioning { font-family: 'Cormorant Garamond', serif; font-size: 18px; font-weight: 400; line-height: 1.65; color: var(--ink-mid); max-width: 640px; padding-left: 20px; border-left: 2px solid var(--gold); }
+
+  .services { display: flex; flex-direction: column; gap: 2px; margin-bottom: 48px; }
+  .service-card { background: var(--paper-warm); border: 1px solid var(--paper-rule); overflow: hidden; }
+  .service-card.retainer { background: var(--ink); }
+  .card-header { display: grid; grid-template-columns: 1fr auto; align-items: start; gap: 24px; padding: 24px 28px 20px; cursor: pointer; user-select: none; }
+  .card-header:hover .card-toggle { color: var(--gold); }
+  .card-title-row { display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap; margin-bottom: 6px; }
+  .service-name { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 500; color: var(--ink); }
+  .retainer .service-name { color: var(--paper); }
+  .service-tag { font-size: 9px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink-faint); border: 1px solid var(--paper-rule); padding: 2px 8px; }
+  .retainer .service-tag { color: #78716C; border-color: #3C3733; }
+  .risk-line { font-size: 12.5px; color: var(--ink-soft); line-height: 1.5; font-style: italic; max-width: 520px; }
+  .retainer .risk-line { color: #78716C; }
+  .card-price-col { text-align: right; flex-shrink: 0; }
+  .price-amount { font-family: 'Cormorant Garamond', serif; font-size: 26px; font-weight: 600; color: var(--ink); white-space: nowrap; }
+  .retainer .price-amount { color: var(--paper); }
+  .price-note { font-size: 10px; color: var(--ink-faint); white-space: nowrap; }
+  .retainer .price-note { color: #57534E; }
+  .card-toggle { font-size: 18px; color: var(--ink-faint); margin-top: 4px; transition: color 0.2s, transform 0.2s; display: block; }
+  .retainer .card-toggle { color: #57534E; }
+  .card-body { display: none; padding: 0 28px 24px; border-top: 1px solid var(--paper-rule); }
+  .retainer .card-body { border-top-color: #2C2926; }
+  .card-body.open { display: block; }
+  .card-body-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; padding-top: 20px; }
+  .col-label { font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-faint); margin-bottom: 10px; }
+  .retainer .col-label { color: #57534E; }
+  .scope-text { font-size: 12.5px; line-height: 1.65; color: var(--ink-mid); }
+  .retainer .scope-text { color: #A8A29E; }
+  .deliverables-list { list-style: none; font-size: 12.5px; color: var(--ink-mid); }
+  .retainer .deliverables-list { color: #A8A29E; }
+  .deliverables-list li { padding: 5px 0 5px 16px; position: relative; border-bottom: 1px solid var(--paper-rule); line-height: 1.45; }
+  .retainer .deliverables-list li { border-bottom-color: #2C2926; }
+  .deliverables-list li:last-child { border-bottom: none; }
+  .deliverables-list li::before { content: '→'; position: absolute; left: 0; color: var(--gold); font-size: 10px; top: 6px; }
+
+  .footer-note { margin-top: 8px; padding-top: 28px; border-top: 1px solid var(--paper-rule); display: grid; grid-template-columns: 1fr 1fr; gap: 32px; margin-bottom: 52px; }
+  .footer-item-label { font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); margin-bottom: 6px; }
+  .footer-item p { font-size: 12px; line-height: 1.65; color: var(--ink-soft); }
+
+  .cta-strip { background: var(--ink); padding: 36px 40px; display: flex; justify-content: space-between; align-items: center; gap: 24px; }
+  .cta-text { font-family: 'Cormorant Garamond', serif; font-size: 22px; color: var(--paper); line-height: 1.3; }
+  .btn-light { display: inline-block; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; padding: 11px 22px; background: var(--paper); color: var(--ink); white-space: nowrap; flex-shrink: 0; transition: background 0.15s; }
+  .btn-light:hover { background: var(--paper-warm); }
+
+  footer { border-top: 1px solid var(--paper-rule); padding: 28px 48px; display: flex; justify-content: space-between; align-items: center; }
+  .footer-name { font-family: 'Cormorant Garamond', serif; font-size: 14px; color: var(--ink-soft); }
+  .footer-links { display: flex; gap: 24px; }
+  .footer-links a { font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-faint); transition: color 0.15s; }
+  .footer-links a:hover { color: var(--ink); }
+
+  @media (max-width: 680px) {
+    nav { padding: 0 24px; }
+    .nav-links { display: none; position: absolute; top: 60px; left: 0; right: 0; background: var(--paper); border-bottom: 1px solid var(--paper-rule); flex-direction: column; padding: 20px 24px; gap: 16px; }
+    .nav-links.open { display: flex; }
+    .nav-hamburger { display: flex; }
+    .page { padding: 40px 24px 64px; }
+    .page-header h1 { font-size: 32px; }
+    .card-body-inner { grid-template-columns: 1fr; }
+    .footer-note { grid-template-columns: 1fr; }
+    .cta-strip { flex-direction: column; text-align: center; padding: 28px 24px; }
+    footer { flex-direction: column; gap: 16px; text-align: center; padding: 24px; }
+  }
+</style>
+</head>
+<body>
+<nav>
+  <a href="index.html" class="nav-brand">Eugene Krimkevich <span>·</span> Advisory</a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="services.html" class="active">Services</a></li>
+    <li><a href="resume.html">Resume</a></li>
+    <li><a href="contact.html" class="nav-cta">Book a call</a></li>
+  </ul>
+  <div class="nav-hamburger" onclick="document.querySelector('.nav-links').classList.toggle('open')">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<div class="page">
+  <div class="page-header">
+    <div class="eyebrow">Services &amp; Pricing</div>
+    <h1>Engagements<br><em>&amp; what you get</em></h1>
+    <p class="positioning">Embedded lending programs can be complex to evaluate, intensive to launch, and painful to unwind if they fail. I've personally launched and overseen dozens of embedded capital programs and seen first-hand what works and what doesn't.</p>
+  </div>
+
+  <div class="section-label">Engagements — click to expand</div>
+  <div class="services">
+
+    <div class="service-card">
+      <div class="card-header" onclick="toggle(this)">
+        <div>
+          <div class="card-title-row">
+            <span class="service-name">Partner Selection &amp; Program Strategy</span>
+            <span class="service-tag">~4 weeks</span>
+          </div>
+          <p class="risk-line">Selecting the wrong lending partner can mean years locked into a program that underperforms — and when something goes wrong with a white-labeled product, it's your brand and your merchants that bear the cost.</p>
+        </div>
+        <div class="card-price-col">
+          <div class="price-amount">$17,500</div>
+          <div class="price-note">fixed fee</div>
+          <span class="card-toggle">↓</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="card-body-inner">
+          <div>
+            <div class="col-label">Scope</div>
+            <p class="scope-text">For platforms evaluating embedded lending for the first time. Covers the full partner selection process — from initial evaluation criteria through provider diligence and final recommendation — with structured guidance on what good looks like at every stage.</p>
+          </div>
+          <div>
+            <div class="col-label">Deliverables</div>
+            <ul class="deliverables-list">
+              <li>Partner evaluation framework &amp; weighted scorecard</li>
+              <li>RFP review &amp; advisory (up to 2 RFP rounds)</li>
+              <li>MSA review — commercial terms, operational obligations, performance incentives</li>
+              <li>Written go/no-go recommendation with rationale</li>
+              <li>Kickoff readiness brief to set up a strong launch</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="service-card">
+      <div class="card-header" onclick="toggle(this)">
+        <div>
+          <div class="card-title-row">
+            <span class="service-name">Launch Execution</span>
+            <span class="service-tag">4–12 weeks</span>
+          </div>
+          <p class="risk-line">Launches that slip or go live without proper infrastructure generate poor early origination — and an under-scoped integration can require significant active, manual management that pulls internal resources for months.</p>
+        </div>
+        <div class="card-price-col">
+          <div class="price-amount">$16,500</div>
+          <div class="price-note">fixed fee</div>
+          <span class="card-toggle">↓</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="card-body-inner">
+          <div>
+            <div class="col-label">Scope</div>
+            <p class="scope-text">For platforms that have selected a provider and need to get to a strong go-live. I join your launch process as an embedded advisor — helping unblock decisions, pressure-test the plan, and make sure nothing critical gets missed in the push to launch.</p>
+          </div>
+          <div>
+            <div class="col-label">Deliverables</div>
+            <ul class="deliverables-list">
+              <li>Launch project plan with milestones, owners, and dependencies</li>
+              <li>Weekly launch call participation (up to 10 calls)</li>
+              <li>Pre-launch readiness review against a proven launch checklist</li>
+              <li>Go-live communication review (merchant-facing messaging &amp; positioning)</li>
+              <li>30-day post-launch check-in on early origination &amp; issues</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="service-card">
+      <div class="card-header" onclick="toggle(this)">
+        <div>
+          <div class="card-title-row">
+            <span class="service-name">Program Audit</span>
+            <span class="service-tag">2–4 weeks</span>
+          </div>
+          <p class="risk-line">Underperforming programs rarely self-correct — and platforms often can't tell whether the root cause is the partner, the product, or the distribution without someone who's seen what good looks like from the inside.</p>
+        </div>
+        <div class="card-price-col">
+          <div class="price-amount">$11,000</div>
+          <div class="price-note">fixed fee</div>
+          <span class="card-toggle">↓</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="card-body-inner">
+          <div>
+            <div class="col-label">Scope</div>
+            <p class="scope-text">For platforms with an existing program that is underperforming, stalled, or approaching a contract renewal. Structured review of origination performance, ops, and distribution — delivered as a written assessment with prioritized recommendations.</p>
+          </div>
+          <div>
+            <div class="col-label">Deliverables</div>
+            <ul class="deliverables-list">
+              <li>Performance data review &amp; diagnostics (provided by platform)</li>
+              <li>Up to 3 stakeholder interviews (internal team members)</li>
+              <li>Written audit report with root cause analysis</li>
+              <li>Prioritized recommendations with 30/60/90-day action plan</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="service-card retainer">
+      <div class="card-header" onclick="toggle(this)">
+        <div>
+          <div class="card-title-row">
+            <span class="service-name">Ongoing Advisory Retainer</span>
+            <span class="service-tag">5 or 10 hrs/month</span>
+          </div>
+          <p class="risk-line">Embedded lending decisions compound quickly — a poorly structured renewal, a missed origination lever, or a bad BD hire can set a program back by a year. Retainer clients get a standing sounding board before decisions are made, not after.</p>
+        </div>
+        <div class="card-price-col">
+          <div class="price-amount">$3,000 / $5,000</div>
+          <div class="price-note">per month · 3-month minimum</div>
+          <span class="card-toggle">↓</span>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="card-body-inner">
+          <div>
+            <div class="col-label">Scope</div>
+            <p class="scope-text">Ongoing access for platforms that want a senior advisor available as questions arise — partner negotiations, team hiring, program growth decisions, contract renewals. $3,000/month for 5 hours of lighter-touch advisory; $5,000/month for 10 hours for active programs or ongoing initiatives.</p>
+          </div>
+          <div>
+            <div class="col-label">What's included</div>
+            <ul class="deliverables-list">
+              <li>Monthly sync call (1 hr) + async access between sessions</li>
+              <li>Ad hoc review of partner comms, term sheets, or internal docs</li>
+              <li>Email response within 24 hours on business days</li>
+              <li>Rollover of unused hours (up to 50%) to the following month</li>
+              <li>Option to convert unused hours to a scoped project at no premium</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="footer-note">
+    <div class="footer-item">
+      <div class="footer-item-label">Project → Retainer</div>
+      <p>Clients completing a scoped engagement can roll into a retainer at a reduced first-month rate. The questions that come up after a launch or audit are often the most consequential ones.</p>
+    </div>
+    <div class="footer-item">
+      <div class="footer-item-label">Scope &amp; Fit</div>
+      <p>All engagements begin with a 1-hour discovery call to confirm scope and fit. International clients or multi-provider programs may be quoted separately. References available on request.</p>
+    </div>
+  </div>
+
+  <div class="cta-strip">
+    <div class="cta-text">Not sure which engagement<br>is right for you?</div>
+    <a href="contact.html" class="btn-light">Book a discovery call</a>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-name">Eugene Krimkevich — Embedded Lending Advisory</div>
+  <div class="footer-links">
+    <a href="about.html">About</a>
+    <a href="services.html">Services</a>
+    <a href="resume.html">Resume</a>
+    <a href="contact.html">Contact</a>
+  </div>
+</footer>
+
+<script>
+  function toggle(header) {
+    const body = header.nextElementSibling;
+    const arrow = header.querySelector('.card-toggle');
+    const isOpen = body.classList.contains('open');
+    body.classList.toggle('open', !isOpen);
+    arrow.style.transform = isOpen ? '' : 'rotate(180deg)';
+  }
+</script>
+</body>
+</html>

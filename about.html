@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About — Eugene Krimkevich</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Epilogue:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1C1917; --ink-mid: #44403C; --ink-soft: #78716C; --ink-faint: #A8A29E;
+    --paper: #FAF7F2; --paper-warm: #F2EDE4; --paper-rule: #E5DDD3;
+    --gold: #B5894A; --gold-light: #D4AA72;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: var(--paper); color: var(--ink); font-family: 'Epilogue', sans-serif; font-weight: 300; line-height: 1.6; min-height: 100vh; }
+  a { color: inherit; text-decoration: none; }
+  nav { position: sticky; top: 0; z-index: 100; background: var(--paper); border-bottom: 1px solid var(--paper-rule); height: 60px; display: flex; align-items: center; padding: 0 48px; justify-content: space-between; }
+  .nav-brand { font-family: 'Cormorant Garamond', serif; font-size: 17px; font-weight: 500; }
+  .nav-brand span { color: var(--gold); }
+  .nav-links { display: flex; gap: 32px; list-style: none; }
+  .nav-links a { font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-soft); transition: color 0.15s; }
+  .nav-links a:hover, .nav-links a.active { color: var(--ink); }
+  .nav-cta { background: var(--ink); color: var(--paper) !important; padding: 8px 18px; }
+  .nav-hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
+  .nav-hamburger span { display: block; width: 22px; height: 1.5px; background: var(--ink); }
+  .page { max-width: 860px; margin: 0 auto; padding: 64px 48px 80px; }
+  .eyebrow { font-size: 9px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); margin-bottom: 10px; }
+  .section-label { font-size: 9px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--ink-faint); margin-bottom: 20px; }
+
+  .page-header { padding-bottom: 36px; border-bottom: 1px solid var(--ink); margin-bottom: 48px; }
+  .page-header h1 { font-family: 'Cormorant Garamond', serif; font-size: 44px; font-weight: 500; line-height: 1.05; }
+  .page-header h1 em { font-style: italic; color: var(--ink-mid); }
+
+  .about-grid { display: grid; grid-template-columns: 1fr 300px; gap: 56px; margin-bottom: 52px; }
+  .about-body p { font-size: 13.5px; line-height: 1.8; color: var(--ink-mid); margin-bottom: 18px; }
+  .about-body p:last-child { margin-bottom: 0; }
+
+  .sidebar-block { border: 1px solid var(--paper-rule); background: var(--paper-warm); padding: 22px; margin-bottom: 10px; }
+  .sidebar-label { font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-faint); margin-bottom: 12px; }
+  .sidebar-block ul { list-style: none; font-size: 12.5px; color: var(--ink-mid); }
+  .sidebar-block ul li { padding: 5px 0 5px 14px; position: relative; border-bottom: 1px solid var(--paper-rule); line-height: 1.4; }
+  .sidebar-block ul li:last-child { border-bottom: none; }
+  .sidebar-block ul li::before { content: '→'; position: absolute; left: 0; color: var(--gold); font-size: 10px; top: 6px; }
+  .sidebar-block p { font-size: 12.5px; color: var(--ink-mid); line-height: 1.6; }
+
+  .rule { border: none; border-top: 1px solid var(--paper-rule); margin: 0 0 36px; }
+
+  .timeline-item { display: grid; grid-template-columns: 110px 1fr; gap: 24px; padding: 24px 0; border-bottom: 1px solid var(--paper-rule); }
+  .timeline-item:first-child { border-top: 1px solid var(--paper-rule); }
+  .timeline-date { font-size: 11px; letter-spacing: 0.08em; color: var(--ink-faint); padding-top: 3px; }
+  .timeline-role { font-family: 'Cormorant Garamond', serif; font-size: 19px; font-weight: 500; color: var(--ink); margin-bottom: 2px; }
+  .timeline-company { font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); margin-bottom: 8px; }
+  .timeline-desc { font-size: 12.5px; color: var(--ink-soft); line-height: 1.6; }
+
+  .cta-strip { background: var(--ink); padding: 36px 40px; display: flex; justify-content: space-between; align-items: center; gap: 24px; margin-top: 48px; }
+  .cta-text { font-family: 'Cormorant Garamond', serif; font-size: 22px; color: var(--paper); line-height: 1.3; }
+  .btn-light { display: inline-block; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; padding: 11px 22px; background: var(--paper); color: var(--ink); white-space: nowrap; flex-shrink: 0; transition: background 0.15s; }
+  .btn-light:hover { background: var(--paper-warm); }
+
+  footer { border-top: 1px solid var(--paper-rule); padding: 28px 48px; display: flex; justify-content: space-between; align-items: center; }
+  .footer-name { font-family: 'Cormorant Garamond', serif; font-size: 14px; color: var(--ink-soft); }
+  .footer-links { display: flex; gap: 24px; }
+  .footer-links a { font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-faint); transition: color 0.15s; }
+  .footer-links a:hover { color: var(--ink); }
+
+  @media (max-width: 680px) {
+    nav { padding: 0 24px; }
+    .nav-links { display: none; position: absolute; top: 60px; left: 0; right: 0; background: var(--paper); border-bottom: 1px solid var(--paper-rule); flex-direction: column; padding: 20px 24px; gap: 16px; }
+    .nav-links.open { display: flex; }
+    .nav-hamburger { display: flex; }
+    .page { padding: 40px 24px 64px; }
+    .page-header h1 { font-size: 32px; }
+    .about-grid { grid-template-columns: 1fr; gap: 32px; }
+    .timeline-item { grid-template-columns: 1fr; gap: 4px; }
+    .cta-strip { flex-direction: column; text-align: center; padding: 28px 24px; }
+    footer { flex-direction: column; gap: 16px; text-align: center; padding: 24px; }
+  }
+</style>
+</head>
+<body>
+<nav>
+  <a href="index.html" class="nav-brand">Eugene Krimkevich <span>·</span> Advisory</a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html" class="active">About</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li><a href="resume.html">Resume</a></li>
+    <li><a href="contact.html" class="nav-cta">Book a call</a></li>
+  </ul>
+  <div class="nav-hamburger" onclick="document.querySelector('.nav-links').classList.toggle('open')">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<div class="page">
+  <div class="page-header">
+    <div class="eyebrow">About</div>
+    <h1>Eugene Krimkevich<br><em>Embedded Lending Advisor</em></h1>
+  </div>
+
+  <div class="about-grid">
+    <div class="about-body">
+      <p>I spent my career at the center of embedded lending — building and scaling the partner onboarding and growth function at Parafin, one of the leading providers of embedded capital products to platforms and marketplaces. During that time I personally launched and oversaw dozens of embedded capital programs across companies like DoorDash, Amazon, Gusto, and Worldpay.</p>
+      <p>I've sat at the table for every part of this process: evaluating platform fit, structuring commercial terms, negotiating MSAs, scoping integrations, and running the playbook to drive origination growth after launch. I've seen what separates programs that take off from those that stall — and it usually comes down to decisions made in the first few weeks.</p>
+      <p>Most platforms come into embedded lending negotiations at an information disadvantage. Providers do dozens of these deals a year. Platforms do one — maybe two — in their lifetime. My goal is to close that gap: giving platforms the frameworks, pattern recognition, and direct guidance they need to make smart decisions, launch effectively, and build programs that actually grow.</p>
+      <p>I work with a small number of clients at a time to keep engagements substantive. If you're evaluating an embedded lending program, preparing for a launch, or trying to understand why an existing program is underperforming, I'd welcome a conversation.</p>
+    </div>
+    <div class="about-sidebar">
+      <div class="sidebar-block">
+        <div class="sidebar-label">Areas of Expertise</div>
+        <ul>
+          <li>Embedded lending partner selection</li>
+          <li>MSA &amp; commercial terms review</li>
+          <li>Program launch &amp; go-live execution</li>
+          <li>Origination growth strategy</li>
+          <li>Program performance diagnostics</li>
+          <li>BD team hiring &amp; structure</li>
+        </ul>
+      </div>
+      <div class="sidebar-block">
+        <div class="sidebar-label">Who I Work With</div>
+        <p>Vertical SaaS platforms and marketplaces evaluating, launching, or scaling embedded lending programs. Occasional advisory for international fintechs seeking to understand the North American embedded lending landscape.</p>
+      </div>
+    </div>
+  </div>
+
+  <hr class="rule">
+  <div class="section-label">Experience</div>
+  <div class="timeline-item">
+    <div class="timeline-date">Present</div>
+    <div>
+      <div class="timeline-role">Independent Advisor</div>
+      <div class="timeline-company">Embedded Lending Advisory</div>
+      <div class="timeline-desc">Advising platforms and marketplaces on partner selection, program launch, and growth strategy for embedded lending programs.</div>
+    </div>
+  </div>
+  <div class="timeline-item">
+    <div class="timeline-date">Prior</div>
+    <div>
+      <div class="timeline-role">Partner Onboarding &amp; Growth</div>
+      <div class="timeline-company">Parafin</div>
+      <div class="timeline-desc">Built and led the function responsible for launching and growing embedded capital programs across Parafin's platform and marketplace partners. Personally oversaw dozens of program launches including DoorDash, Amazon, Gusto, and Worldpay.</div>
+    </div>
+  </div>
+
+  <div class="cta-strip">
+    <div class="cta-text">Ready to talk through your<br>embedded lending program?</div>
+    <a href="contact.html" class="btn-light">Book a discovery call</a>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-name">Eugene Krimkevich — Embedded Lending Advisory</div>
+  <div class="footer-links">
+    <a href="about.html">About</a>
+    <a href="services.html">Services</a>
+    <a href="resume.html">Resume</a>
+    <a href="contact.html">Contact</a>
+  </div>
+</footer>
+</body>
+</html>

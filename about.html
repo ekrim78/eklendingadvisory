@@ -28,9 +28,10 @@
   .eyebrow { font-size: 9px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); margin-bottom: 10px; }
   .section-label { font-size: 9px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--ink-faint); margin-bottom: 20px; }
 
-  .page-header { padding-bottom: 36px; border-bottom: 1px solid var(--ink); margin-bottom: 48px; }
+  .page-header { padding-bottom: 36px; border-bottom: 1px solid var(--ink); margin-bottom: 48px; display: flex; justify-content: space-between; align-items: flex-end; gap: 32px; }
   .page-header h1 { font-family: 'Cormorant Garamond', serif; font-size: 44px; font-weight: 500; line-height: 1.05; }
   .page-header h1 em { font-style: italic; color: var(--ink-mid); }
+  .page-header-photo { width: 140px; height: 140px; object-fit: cover; object-position: center top; flex-shrink: 0; filter: grayscale(20%); }
 
   .about-grid { display: grid; grid-template-columns: 1fr 300px; gap: 56px; margin-bottom: 52px; }
   .about-body p { font-size: 13.5px; line-height: 1.8; color: var(--ink-mid); margin-bottom: 18px; }
@@ -95,8 +96,11 @@
 
 <div class="page">
   <div class="page-header">
-    <div class="eyebrow">About</div>
-    <h1>Eugene Krimkevich</h1>
+    <div>
+      <div class="eyebrow">About</div>
+      <h1>Eugene Krimkevich</h1>
+    </div>
+    <img src="headshot.jpeg" alt="Eugene Krimkevich" class="page-header-photo">
   </div>
 
   <div class="about-grid">

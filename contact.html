@@ -26,38 +26,28 @@
   .nav-hamburger span { display: block; width: 22px; height: 1.5px; background: var(--ink); }
   .page { max-width: 860px; margin: 0 auto; padding: 64px 48px 80px; }
   .eyebrow { font-size: 9px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); margin-bottom: 10px; }
-  .section-label { font-size: 9px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--ink-faint); margin-bottom: 20px; }
 
   .page-header { padding-bottom: 36px; border-bottom: 1px solid var(--ink); margin-bottom: 48px; }
-  .page-header h1 { font-family: 'Cormorant Garamond', serif; font-size: 44px; font-weight: 500; line-height: 1.05; margin-bottom: 20px; }
-  .page-header h1 em { font-style: italic; color: var(--ink-mid); }
-  .positioning { font-family: 'Cormorant Garamond', serif; font-size: 17px; font-weight: 400; line-height: 1.65; color: var(--ink-mid); max-width: 560px; padding-left: 20px; border-left: 2px solid var(--gold); }
+  .page-header h1 { font-family: 'Cormorant Garamond', serif; font-size: 44px; font-weight: 500; line-height: 1.05; }
 
-  /* CONTACT OPTIONS */
-  .contact-primary { background: var(--ink); border: 1px solid var(--ink); padding: 32px; display: flex; justify-content: space-between; align-items: center; gap: 32px; margin-bottom: 2px; }
-  .contact-primary-left {}
-  .contact-type { font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold-light); margin-bottom: 6px; }
-  .contact-title { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 500; color: var(--paper); margin-bottom: 6px; }
-  .contact-desc { font-size: 12.5px; color: #78716C; line-height: 1.55; }
-  .btn-light { display: inline-block; font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; padding: 10px 20px; background: var(--paper); color: var(--ink); white-space: nowrap; flex-shrink: 0; transition: background 0.15s; }
-  .btn-light:hover { background: var(--paper-warm); }
+  /* FORM */
+  .contact-form { margin-bottom: 48px; max-width: 600px; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .form-group { margin-bottom: 20px; }
+  .form-group label { display: block; font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--ink-faint); margin-bottom: 8px; }
+  .form-group input, .form-group textarea { width: 100%; background: var(--paper-warm); border: 1px solid var(--paper-rule); padding: 12px 16px; font-family: 'Epilogue', sans-serif; font-size: 13px; font-weight: 300; color: var(--ink); outline: none; transition: border-color 0.15s; -webkit-appearance: none; border-radius: 0; }
+  .form-group input:focus, .form-group textarea:focus { border-color: var(--ink-soft); }
+  .form-group textarea { min-height: 150px; resize: vertical; }
+  .form-submit { background: var(--ink); color: var(--paper); border: none; font-family: 'Epilogue', sans-serif; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; padding: 12px 24px; cursor: pointer; transition: background 0.15s; }
+  .form-submit:hover { background: var(--ink-mid); }
 
-  .contact-secondary { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; margin-bottom: 52px; }
-  .contact-card { background: var(--paper-warm); border: 1px solid var(--paper-rule); padding: 28px 28px 24px; display: flex; flex-direction: column; justify-content: space-between; min-height: 190px; transition: border-color 0.15s; }
-  .contact-card:hover { border-color: var(--gold-light); }
-  .contact-card .contact-type { color: var(--gold); }
-  .contact-card .contact-title { color: var(--ink); font-family: 'Cormorant Garamond', serif; font-size: 20px; font-weight: 500; margin-bottom: 8px; }
-  .contact-card .contact-desc { color: var(--ink-soft); font-size: 12.5px; line-height: 1.55; flex-grow: 1; margin-bottom: 18px; }
-  .contact-action { display: inline-block; font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink); border: 1px solid var(--paper-rule); padding: 8px 16px; transition: all 0.15s; align-self: flex-start; }
-  .contact-action:hover { background: var(--ink); color: var(--paper); border-color: var(--ink); }
-
-  /* WHAT TO EXPECT */
-  .expectations { background: var(--paper-warm); border: 1px solid var(--paper-rule); padding: 28px 32px; }
-  .expect-label { font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 20px; }
-  .expect-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 24px; }
-  .step-num { font-family: 'Cormorant Garamond', serif; font-size: 32px; font-weight: 600; color: var(--paper-rule); line-height: 1; margin-bottom: 6px; }
-  .step-title { font-size: 12px; font-weight: 500; color: var(--ink); margin-bottom: 4px; }
-  .step-desc { font-size: 12px; color: var(--ink-soft); line-height: 1.5; }
+  /* CONTACT LINKS */
+  .contact-links { display: flex; gap: 12px; flex-wrap: wrap; padding-top: 32px; border-top: 1px solid var(--paper-rule); }
+  .btn { display: inline-block; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; padding: 11px 22px; transition: all 0.15s; }
+  .btn-primary { background: var(--ink); color: var(--paper); }
+  .btn-primary:hover { background: var(--ink-mid); }
+  .btn-outline { border: 1px solid var(--paper-rule); color: var(--ink-soft); }
+  .btn-outline:hover { border-color: var(--ink-soft); color: var(--ink); }
 
   footer { border-top: 1px solid var(--paper-rule); padding: 28px 48px; display: flex; justify-content: space-between; align-items: center; }
   .footer-name { font-family: 'Cormorant Garamond', serif; font-size: 14px; color: var(--ink-soft); }
@@ -72,9 +62,7 @@
     .nav-hamburger { display: flex; }
     .page { padding: 40px 24px 64px; }
     .page-header h1 { font-size: 32px; }
-    .contact-primary { flex-direction: column; align-items: flex-start; gap: 16px; }
-    .contact-secondary { grid-template-columns: 1fr; }
-    .expect-grid { grid-template-columns: 1fr; gap: 16px; }
+    .form-row { grid-template-columns: 1fr; }
     footer { flex-direction: column; gap: 16px; text-align: center; padding: 24px; }
   }
 </style>
@@ -87,7 +75,8 @@
     <li><a href="about.html">About</a></li>
     <li><a href="services.html">Services</a></li>
     <li><a href="resume.html">Resume</a></li>
-    <li><a href="contact.html" class="nav-cta active">Book a call</a></li>
+    <li><a href="contact.html" class="active">Contact</a></li>
+    <li><a href="https://calendar.app.google/yLQr5Wng1prbT4F9A" target="_blank" class="nav-cta">Book a call</a></li>
   </ul>
   <div class="nav-hamburger" onclick="document.querySelector('.nav-links').classList.toggle('open')">
     <span></span><span></span><span></span>
@@ -97,57 +86,30 @@
 <div class="page">
   <div class="page-header">
     <div class="eyebrow">Contact</div>
-    <h1>Let's talk about<br><em>your program</em></h1>
-    <p class="positioning">All engagements begin with a 1-hour discovery call to understand your situation and confirm fit. There's no commitment required.</p>
+    <h1>Get in touch</h1>
   </div>
 
-  <div class="contact-primary">
-    <div class="contact-primary-left">
-      <div class="contact-type">Preferred</div>
-      <div class="contact-title">Book a 1-hour discovery call</div>
-      <div class="contact-desc">Pick a time that works for you. We'll discuss your program, where you are in the process, and whether there's a fit.</div>
+  <form class="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+    <div class="form-row">
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" required placeholder="Your name">
+      </div>
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" required placeholder="you@company.com">
+      </div>
     </div>
-    <a href="https://calendar.app.google/yLQr5Wng1prbT4F9A" target="_blank" class="btn-light">Book a time →</a>
-  </div>
+    <div class="form-group">
+      <label for="message">What are you working on?</label>
+      <textarea id="message" name="message" required placeholder="Tell me about your program — where you are in the process and what you're trying to figure out."></textarea>
+    </div>
+    <button type="submit" class="form-submit">Send message</button>
+  </form>
 
-  <div class="contact-secondary">
-    <div class="contact-card">
-      <div>
-        <div class="contact-type">Email</div>
-        <div class="contact-title">Send a note directly</div>
-        <div class="contact-desc">Prefer to reach out first? Send a brief note about what you're working on and I'll get back to you within 1 business day.</div>
-      </div>
-      <a href="mailto:ekrimkevich@gmail.com" class="contact-action">ekrimkevich@gmail.com</a>
-    </div>
-    <div class="contact-card">
-      <div>
-        <div class="contact-type">Services</div>
-        <div class="contact-title">Not sure which engagement fits?</div>
-        <div class="contact-desc">Review the full scope and deliverables for each engagement before reaching out — or just bring your questions to the discovery call.</div>
-      </div>
-      <a href="services.html" class="contact-action">View services →</a>
-    </div>
-  </div>
-
-  <div class="section-label">What to expect</div>
-  <div class="expectations">
-    <div class="expect-grid">
-      <div>
-        <div class="step-num">01</div>
-        <div class="step-title">Discovery call (1 hr)</div>
-        <div class="step-desc">We discuss your program, where you are in the process, and what good outcomes look like for you. No commitment required.</div>
-      </div>
-      <div>
-        <div class="step-num">02</div>
-        <div class="step-title">Scope &amp; proposal</div>
-        <div class="step-desc">If there's a fit, I'll send a scoped proposal within 2 business days — outlining the engagement, deliverables, timeline, and fee.</div>
-      </div>
-      <div>
-        <div class="step-num">03</div>
-        <div class="step-title">Kickoff</div>
-        <div class="step-desc">Once aligned, we kick off within the week. Engagements are structured from day one so time is used efficiently.</div>
-      </div>
-    </div>
+  <div class="contact-links">
+    <a href="https://calendar.app.google/yLQr5Wng1prbT4F9A" target="_blank" class="btn btn-primary">Book a discovery call</a>
+    <a href="https://www.linkedin.com/in/eugenekrimkevich/" target="_blank" class="btn btn-outline">LinkedIn →</a>
   </div>
 </div>
 

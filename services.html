@@ -50,8 +50,9 @@
   .retainer .price-amount { color: var(--paper); }
   .price-note { font-size: 10px; color: var(--ink-faint); white-space: nowrap; }
   .retainer .price-note { color: #57534E; }
-  .card-toggle { font-size: 18px; color: var(--ink-faint); margin-top: 4px; transition: color 0.2s, transform 0.2s; display: block; }
-  .retainer .card-toggle { color: #57534E; }
+  .card-toggle { font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-soft); border: 1px solid var(--paper-rule); padding: 5px 10px; margin-top: 6px; transition: all 0.2s; display: inline-block; white-space: nowrap; }
+  .card-header:hover .card-toggle { border-color: var(--ink-soft); color: var(--ink); }
+  .retainer .card-toggle { color: #78716C; border-color: #3C3733; }
   .card-body { display: none; padding: 0 28px 24px; border-top: 1px solid var(--paper-rule); }
   .retainer .card-body { border-top-color: #2C2926; }
   .card-body.open { display: block; }
@@ -113,12 +114,11 @@
 
 <div class="page">
   <div class="page-header">
-    <div class="eyebrow">Services &amp; Pricing</div>
-    <h1>Engagements<br><em>&amp; what you get</em></h1>
+    <div class="eyebrow">Services</div>
+    <h1>Engagements</h1>
     <p class="positioning">Embedded lending programs can be complex to evaluate, intensive to launch, and painful to unwind if they fail. I've personally launched and overseen dozens of embedded capital programs and seen first-hand what works and what doesn't.</p>
   </div>
 
-  <div class="section-label">Engagements — click to expand</div>
   <div class="services">
 
     <div class="service-card">
@@ -133,7 +133,7 @@
         <div class="card-price-col">
           <div class="price-amount">$17,500</div>
           <div class="price-note">fixed fee</div>
-          <span class="card-toggle">↓</span>
+          <span class="card-toggle">Details ↓</span>
         </div>
       </div>
       <div class="card-body">
@@ -168,7 +168,7 @@
         <div class="card-price-col">
           <div class="price-amount">$16,500</div>
           <div class="price-note">fixed fee</div>
-          <span class="card-toggle">↓</span>
+          <span class="card-toggle">Details ↓</span>
         </div>
       </div>
       <div class="card-body">
@@ -203,7 +203,7 @@
         <div class="card-price-col">
           <div class="price-amount">$11,000</div>
           <div class="price-note">fixed fee</div>
-          <span class="card-toggle">↓</span>
+          <span class="card-toggle">Details ↓</span>
         </div>
       </div>
       <div class="card-body">
@@ -237,7 +237,7 @@
         <div class="card-price-col">
           <div class="price-amount">$3,000 / $5,000</div>
           <div class="price-note">per month · 3-month minimum</div>
-          <span class="card-toggle">↓</span>
+          <span class="card-toggle">Details ↓</span>
         </div>
       </div>
       <div class="card-body">
@@ -292,10 +292,10 @@
 <script>
   function toggle(header) {
     const body = header.nextElementSibling;
-    const arrow = header.querySelector('.card-toggle');
+    const toggle = header.querySelector('.card-toggle');
     const isOpen = body.classList.contains('open');
     body.classList.toggle('open', !isOpen);
-    arrow.style.transform = isOpen ? '' : 'rotate(180deg)';
+    toggle.textContent = isOpen ? 'Details ↓' : 'Details ↑';
   }
 </script>
 </body>

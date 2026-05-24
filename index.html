@@ -73,6 +73,17 @@
   .services-cta a { font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); border-bottom: 1px solid transparent; transition: border-color 0.15s; }
   .services-cta a:hover { border-color: var(--gold); }
 
+  /* INFO SECTIONS */
+  .info-section { padding: 48px 0; border-top: 1px solid var(--paper-rule); }
+  .info-section h2 { font-family: 'Cormorant Garamond', serif; font-size: 30px; font-weight: 500; color: var(--ink); margin-bottom: 20px; line-height: 1.1; }
+  .info-section p { font-size: 13.5px; line-height: 1.8; color: var(--ink-mid); margin-bottom: 16px; }
+  .info-section p:last-child { margin-bottom: 0; }
+  .info-section ul { list-style: none; font-size: 13.5px; color: var(--ink-mid); margin-top: 12px; }
+  .info-section ul li { padding: 7px 0 7px 18px; position: relative; border-bottom: 1px solid var(--paper-rule); line-height: 1.6; }
+  .info-section ul li:last-child { border-bottom: none; }
+  .info-section ul li::before { content: '→'; position: absolute; left: 0; color: var(--gold); font-size: 10px; top: 9px; }
+  .bottom-cta { padding: 48px 0 0; text-align: center; border-top: 1px solid var(--paper-rule); }
+
   /* FOOTER */
   footer { border-top: 1px solid var(--paper-rule); padding: 28px 48px; display: flex; justify-content: space-between; align-items: center; }
   .footer-name { font-family: 'Cormorant Garamond', serif; font-size: 14px; color: var(--ink-soft); }
@@ -115,11 +126,11 @@
 <div class="page">
   <div class="hero">
     <div class="eyebrow">Embedded Lending Advisory</div>
-    <h1>Built for platforms.<br><em>From the provider side.</em></h1>
+    <h1>Provider-side experience.<br><em>Platform-side advisory.</em></h1>
     <div class="hero-sub">Partner selection &nbsp;·&nbsp; Launch execution &nbsp;·&nbsp; Program audits</div>
-    <p class="hero-body">Embedded lending programs can be complex to evaluate, intensive to launch, and painful to unwind if they fail. I built the onboarding and partner growth function at Parafin — and I advise platforms so they go in with the same information the lender already has.</p>
+    <p class="hero-body">I was the founding hire at Parafin for Platform Growth, the team that launched and scaled the largest embedded lending programs in North America. My engagements aren't grounded in secondhand knowledge or research, but on direct experience launching and building expansive embedded lending programs from the ground up. I demystify the patterns, practices, and playbooks around selecting, launching, and growing your embedded lending program.</p>
     <div class="hero-actions">
-      <a href="contact.html" class="btn btn-primary">Book a discovery call</a>
+      <a href="https://calendar.app.google/yLQr5Wng1prbT4F9A" target="_blank" class="btn btn-primary">Book a discovery call</a>
       <a href="services.html" class="btn btn-secondary">View services & pricing</a>
     </div>
   </div>
@@ -148,19 +159,11 @@
         <div class="tile-name">Partner Selection &amp; Program Strategy</div>
         <div class="tile-desc">Structured guidance through the full evaluation process — from RFP to MSA review to a written go/no-go recommendation.</div>
       </div>
-      <div class="tile-meta">
-        <div class="tile-price">$17,500</div>
-        <div class="tile-duration">~4 weeks</div>
-      </div>
     </div>
     <div class="service-tile">
       <div>
         <div class="tile-name">Launch Execution</div>
         <div class="tile-desc">Embedded advisory support from kickoff through go-live — project planning, weekly calls, readiness review, and a 30-day post-launch check-in.</div>
-      </div>
-      <div class="tile-meta">
-        <div class="tile-price">$16,500</div>
-        <div class="tile-duration">4–12 weeks</div>
       </div>
     </div>
     <div class="service-tile">
@@ -168,23 +171,35 @@
         <div class="tile-name">Program Audit</div>
         <div class="tile-desc">Structured review of an underperforming or stalled program — root cause analysis and a prioritized 30/60/90-day action plan.</div>
       </div>
-      <div class="tile-meta">
-        <div class="tile-price">$11,000</div>
-        <div class="tile-duration">2–4 weeks</div>
-      </div>
     </div>
     <div class="service-tile dark">
       <div>
         <div class="tile-name">Ongoing Advisory Retainer</div>
         <div class="tile-desc">A standing sounding board for partner negotiations, renewals, hiring, and program growth — before decisions are made, not after.</div>
       </div>
-      <div class="tile-meta">
-        <div class="tile-price">$3,000 / $5,000</div>
-        <div class="tile-duration">5 or 10 hrs · monthly</div>
-      </div>
     </div>
   </div>
   <div class="services-cta"><a href="services.html">Full scope &amp; deliverables →</a></div>
+
+  <div class="info-section">
+    <h2>What is embedded lending?</h2>
+    <p>Embedded lending is when a platform — a vertical SaaS company, marketplace, or payment processor — offers small business financing directly within their product, powered by a third-party capital provider. The platform handles distribution; the lender handles underwriting, capital, and compliance. The result is a financial product that feels native to the platform but is built on someone else's infrastructure.</p>
+    <p>The most common products: merchant cash advances (MCAs), which advance funds against future receivables; flex loans, which offer a revolving draw-down structure; term loans, fixed repayment over a set period; and B2B BNPL / pay-over-time, which lets merchants extend payment terms to their own customers. Each has different risk profiles, underwriting requirements, and fit depending on your merchant base and platform data.</p>
+  </div>
+
+  <div class="info-section">
+    <h2>Who I work with</h2>
+    <p>My engagements are typically a good fit for:</p>
+    <ul>
+      <li>Vertical SaaS platforms and marketplaces with 5,000+ SMB merchants who are evaluating, launching, or scaling an embedded lending program</li>
+      <li>Platforms that process or have visibility into merchant revenue or transaction data and can share this data with their lending partner</li>
+      <li>An executive or product leader has been asked to own the embedded lending decision, but the domain isn't their core expertise</li>
+    </ul>
+  </div>
+
+  <div class="bottom-cta">
+    <a href="https://calendar.app.google/yLQr5Wng1prbT4F9A" target="_blank" class="btn btn-primary">Book a discovery call</a>
+  </div>
 </div>
 
 <footer>

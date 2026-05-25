@@ -46,14 +46,12 @@
   .btn-secondary { border: 1px solid var(--paper-rule); color: var(--ink-soft); }
   .btn-secondary:hover { border-color: var(--ink-soft); color: var(--ink); }
 
-  /* CRED STRIP */
-  .cred-strip { background: var(--paper-warm); border: 1px solid var(--paper-rule); padding: 28px 32px; display: grid; grid-template-columns: 1fr 1px 1fr 1px 1fr; gap: 0; margin-bottom: 52px; align-items: center; }
-  .cred-item { padding: 0 24px; text-align: center; }
-  .cred-item:first-child { padding-left: 0; }
-  .cred-item:last-child { padding-right: 0; }
-  .cred-number { font-family: 'Cormorant Garamond', serif; font-size: 28px; font-weight: 600; color: var(--ink); line-height: 1.1; margin-bottom: 4px; }
-  .cred-label { font-size: 11px; color: var(--ink-soft); line-height: 1.4; }
-  .cred-divider { width: 1px; height: 48px; background: var(--paper-rule); }
+  /* LOGO STRIP */
+  .logo-strip { margin-bottom: 52px; }
+  .logo-strip-label { font-size: 9px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--ink-faint); margin-bottom: 20px; }
+  .logo-grid { display: flex; flex-wrap: wrap; align-items: center; gap: 32px 40px; }
+  .logo-grid img { height: 28px; width: auto; filter: grayscale(100%); opacity: 0.55; transition: opacity 0.2s; }
+  .logo-grid img:hover { opacity: 0.85; }
 
   /* SERVICE TILES */
   .services-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; margin-bottom: 16px; }
@@ -128,27 +126,23 @@
     <div class="eyebrow">Embedded Lending Advisory</div>
     <h1>Provider-side experience.<br><em>Platform-side advisory.</em></h1>
     <div class="hero-sub">Partner selection &nbsp;·&nbsp; Launch execution &nbsp;·&nbsp; Program audits</div>
-    <p class="hero-body">I was the founding hire at Parafin for Platform Growth, the team that launched and scaled the largest embedded lending programs in North America. My engagements aren't grounded in secondhand knowledge or research, but on direct experience launching and building expansive embedded lending programs from the ground up. I demystify the patterns, practices, and playbooks around selecting, launching, and growing your embedded lending program.</p>
+    <p class="hero-body">I was the founding leader at Parafin of Platform Growth, the team that launched and scaled the largest embedded lending programs in North America. My engagements aren't grounded in second-hand knowledge or consulting-based research, but on direct experience launching and building expansive embedded lending programs from the ground up. I demystify the patterns, practices, and playbooks around selecting, launching, and growing your embedded lending program.</p>
     <div class="hero-actions">
       <a href="https://calendar.app.google/yLQr5Wng1prbT4F9A" target="_blank" class="btn btn-primary">Book a discovery call</a>
       <a href="services.html" class="btn btn-secondary">View services & pricing</a>
     </div>
   </div>
 
-  <div class="cred-strip">
-    <div class="cred-item">
-      <div class="cred-number">Parafin</div>
-      <div class="cred-label">Built & led partner onboarding and growth function</div>
-    </div>
-    <div class="cred-divider"></div>
-    <div class="cred-item">
-      <div class="cred-number">Dozens</div>
-      <div class="cred-label">Embedded capital programs personally launched & overseen</div>
-    </div>
-    <div class="cred-divider"></div>
-    <div class="cred-item">
-      <div class="cred-number">DoorDash · Amazon<br>Gusto · Worldpay</div>
-      <div class="cred-label">Among platforms served at Parafin</div>
+  <div class="logo-strip">
+    <div class="logo-strip-label">Programs I Launched / Managed</div>
+    <div class="logo-grid">
+      <img src="logos/doordash.svg" alt="DoorDash">
+      <img src="logos/amazon.svg" alt="Amazon">
+      <img src="logos/tiktok.svg" alt="TikTok">
+      <img src="logos/mindbody.svg" alt="Mindbody">
+      <img src="logos/spoton.svg" alt="SpotOn">
+      <img src="logos/jobber.svg" alt="Jobber">
+      <img src="logos/360payments.svg" alt="360 Payments">
     </div>
   </div>
 
